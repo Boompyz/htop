@@ -1,3 +1,197 @@
+What's new in version 3.0.4
+
+* Separate tree and list sort orders
+* Invert Process_compare so that superclass matches run first
+(thanks to Hisham Muhammad)
+* Unhardcode Mac OS tick-to-milliseconds conversion
+(thanks to Alexander Momchilov)
+* Check if clock_gettime needs linking of librt
+* Define O_PATH if not already defined
+(thanks to Chris Burr)
+* Add column on Mac for processes running under translation
+(thanks to Dániel Bakai)
+* Configure check for additional linker flags for keypad(3)
+* PSI Meter: constant width and only print ten-duration as bar
+* Sort in paused mode after inverting sort order
+* Handle absence of package CPU temperature
+* Meter: restore non-wide-character build
+* LibSensors: restore temperature for Raspberry Pi
+* MainPanel: do not reset hideProcessSelection on KEY_SHUFFLE
+* BarMeter: rework text padding
+* Panel: rework drawing of FunctionBar
+* Meter: fix artifacts with very tiny width
+* DragonFlyBSD updates
+* BUGFIX: Fix dlopen issue for libsensors5 for some platforms
+* BUGFIX: Fix broken tree display on inverted sort order
+* BUGFIX: Fix pause mode ("Z") in tree view
+* BUGFIX: Correct timebase for non-x86 CPUs on Darwin
+* BUGFIX: Avoid NULL dereference on zombie processes
+* Document dynamic bindings and assumed external configuration
+* Update key mapping documentation for sorting
+
+What's new in version 3.0.3
+
+* Process sorting in 'tree' mode
+  (thanks to Maxim Zhiburt)
+* Improved command display/sort functionality
+  (thanks to Narendran Gopalakrishnan)
+* Add screen for active file locks
+  (thanks to Fynn J. Wulf)
+* Calculate library size (M_LRS column) from maps file
+  (thanks to Fynn J. Wulf)
+* Add a Zram meter
+  (thanks to Murloc Knight)
+* Add Linux cwd process column
+* Dynamically load libsensors at runtime
+* Improve PressureStall Meter display strings
+* Hide process selection on ESC
+* Fully support non-ascii characters in Meter-Bar
+* Add support to change numeric options in settings screen
+* Rename virtual memory column from M_SIZE to M_VIRT
+* Add process column for normalized CPU usage
+* Show CPU temperature in CPU meter
+* Drop hideThreads Setting
+* Add a systemd meter
+* Add a network IO meter
+* Add a SELinux meter
+* Compress size of default FunctionBar
+* Updates to the OpenFiles screen
+* Continue updating header data in paused mode
+* BUGFIX: Handle data wraparounds in IO meters
+* BUGFIX: Update InfoScreen content on resize
+* Add security attribute process column
+* Add DiskIOMeter for IO read/write usage
+* Read CPU frequency from sysfs by default
+* Add Linux process column for context switches
+* Several FreeBSD and Mac OS X platform updates
+  (thanks to Christian Göttsche)
+* Add process environment for FreeBSD
+  (thanks to Ross Williams)
+* Parse POWER_SUPPLY_CAPACITY for Linux Battery meter
+  (thanks to Jan Palus)
+* Add octuple-column CPU meters.
+* BUGFIX: On Linux consider ZFS ARC to be cache
+  (thanks to @multi)
+* BUGFIX: Limit screen title length to window width
+* Show selected command wrapped in a separate window
+  (thanks to @ryenus)
+* Allow to pass '/' for item search
+* Document implicit incremental search
+* Handle 'q' as quit if first character
+* Avoid expensive build of process tree when not using it
+* Include documentation for COMM and EXE
+* Distinguish display of no permissions for reading M_LRS
+* Only calculate M_LRS size every 2 seconds
+* Improvements to comm / cmdline display functionality
+* Merged view for COMM, EXE and cmdline
+  (thanks to Narendran Gopalakrishnan and Benny Baumann)
+* Consistent kernel thread display for COMM/EXE columns
+* Central fault handling for all platforms
+* Handle parsing envID & VPid from process status file
+* Use threshold for display of guest/steal/irq meters
+* Enhance highlighting of semi-large and large numbers
+* Documentation on the repository style guide
+  (thanks to Benny Baumann)
+* Align processor identifier to the right
+  (thanks to Christian Hesse)
+* Document M_PSS, M_PSSWP, M_SWAP in man page
+* Add Date and DateTime meters
+  (thanks to Michael F. Schönitzer)
+* BUGFIX: Fix Solaris 11.4 due to missing ZFS ARC kstats
+  (thanks to @senjan)
+* Code hardening, speedups, fd and memory leak fixes
+  (thanks to Christian Göttsche and Benny Baumann)
+* Number CPUs from zero by default
+  (thanks to Zev Weiss)
+* Remove residual python checks during the build process
+  (thanks to Stephen Gregoratto)
+
+What's new in version 3.0.2
+
+* BUGFIX: Drop 'vim_mode' - several issues, needs rethink
+* BUGFIX: fix regression in -u optional-argument handling
+* Build system rework to remove python, header generation
+  (thanks to Zev Weiss and Hugo Musso Gualandi)
+* BUGFIX: report nice level correctly on Solaris
+  (thanks to Dominik Hassler)
+* CI, code quality improvements
+  (thanks to Tobias Kortkamp, Christian Hesse, Benny Baumann)
+
+What's new in version 3.0.1
+
+* Coverity fixes, CI improvements, documentation updates
+* BUGFIX: Fix early exit with longer sysfs battery paths
+* BUGFIX: Improve OOM output, fix sorting
+  (thanks to Christian Göttsche)
+* Rework check buttons and tree open/closed
+  (thanks to Bert Wesarg)
+* Add -U/--no-unicode option to disable unicode
+  (thanks to Christian Hesse)
+* Improvements to the affinity panel
+  (thanks to Bert Wesarg)
+
+What's new in version 3.0.0
+
+* New maintainers - after a prolonged period of inactivity
+  from Hisham, the creator and original maintainer, a team
+  of community maintainers have volunteered to take over a
+  fork at https://htop.dev and https://github.com/htop-dev
+  to keep the project going.
+* Support ZFS ARC statistics
+  (thanks to Ross Williams)
+* Support more than 2 smaller CPU meter columns
+  (thanks to Christoph Budziszewski)
+* Support Linux proportional set size metrics
+  (thanks to @linvinus, @ntninja and @himikof)
+* Support Linux pressure stall information metrics
+  (thanks to Ran Benita)
+* New display option to show CPU frequency in CPU meters
+  (thanks to Arnav Singh)
+* Update Linux sysfs battery discovery for recent kernels
+  (thanks to @smattie)
+* Add hardware topology information in the affinity panel
+  (thanks to Bert Wesarg)
+* Add timestamp reporting to the strace screen
+  (thanks to Mario Harjac)
+* Add simple, optional vim key mapping mode
+  (thanks to Daniel Flanagan)
+* Added an option to disable the mouse
+  (thanks to MartinJM)
+* Add Solaris11 compatibility
+  (thanks to Jan Senolt)
+* Without an argument -u uses $USER value automatically
+  (thanks to @solanav)
+* Support less(1) search navigation shortcuts
+  (thanks to @syrrim)
+* Update the FreeBSD maximum PID to match FreeBSD change
+  (thanks to @multiplexd)
+* Report values larger than 100 terabytes
+  (thanks to @adrien1018)
+* Widen ST_UID (UID) column to allow for UIDs > 9999
+  (thanks to DLange)
+* BUGFIX: fix makefiles for building with clang
+  (thanks to Jorge Pereira)
+* BUGFIX: fix <sys/sysmacros.h> major() usage
+  (thanks to @wataash and Kang-Che Sung)
+* BUGFIX: fix the STARTTIME column on FreeBSD
+  (thanks to Rob Crowston)
+* BUGFIX: truncate overwide jail names on FreeBSD
+  (thanks to Rob Crowston)
+* BUGFIX: fix reported memory values on FreeBSD
+  (thanks to Tobias Kortkamp)
+* BUGFIX: fix reported CPU meter values on OpenBSD
+  (thanks to @motet-a)
+* BUGFIX: correctly identify other types of zombie process
+  (thanks to @joder)
+* BUGFIX: improve follow-process handling in some situations
+  (thanks to @wangqr)
+* BUGFIX: fix custom meters reverting to unexpected setting
+  (thanks to @wangqr)
+* BUGFIX: close pipe after running lsof(1)
+  (thanks to Jesin)
+* BUGFIX: meters honour setting of counting CPUs from 0/1
+  (thanks to @rnsanchez)
+
 What's new in version 2.2.0
 
 * Solaris/Illumos/OpenIndiana support
@@ -158,7 +352,7 @@ What's new in version 1.0.2
 What's new in version 1.0.1
 
 * Move .htoprc to XDG-compliant path ~/.config/htop/htoprc,
-  respecting $XDG_CONFIG_HOME 
+  respecting $XDG_CONFIG_HOME
   (thanks to Hadzhimurad Ustarkhan for the suggestion.)
 * Safer behavior on the kill screen, to make it harder to kill the wrong process.
 * Fix for building in FreeBSD 8.2
@@ -546,7 +740,7 @@ What's new in version 0.3.1
 
 What's new in version 0.3
 
-* BUGFIX: no dirt left on screen on horizontal scrolling 
+* BUGFIX: no dirt left on screen on horizontal scrolling
 * Signal selection on "kill" command
 * Color-coding for users, nice and process status
 * "Follow" function

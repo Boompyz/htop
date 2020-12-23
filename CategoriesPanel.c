@@ -1,38 +1,28 @@
 /*
 htop - CategoriesPanel.c
 (C) 2004-2011 Hisham H. Muhammad
-Released under the GNU GPL, see the COPYING file
+Released under the GNU GPLv2, see the COPYING file
 in the source distribution for its full text.
 */
 
 #include "CategoriesPanel.h"
 
-#include "AvailableMetersPanel.h"
-#include "MetersPanel.h"
-#include "DisplayOptionsPanel.h"
-#include "ColumnsPanel.h"
-#include "ColorsPanel.h"
-#include "AvailableColumnsPanel.h"
-
-#include <assert.h>
+#include <ctype.h>
+#include <stdbool.h>
 #include <stdlib.h>
 
-/*{
-#include "Panel.h"
-#include "Settings.h"
-#include "ScreenManager.h"
-#include "ProcessList.h"
+#include "AvailableColumnsPanel.h"
+#include "AvailableMetersPanel.h"
+#include "ColorsPanel.h"
+#include "ColumnsPanel.h"
+#include "DisplayOptionsPanel.h"
+#include "FunctionBar.h"
+#include "ListItem.h"
+#include "MetersPanel.h"
+#include "Object.h"
+#include "ProvideCurses.h"
+#include "Vector.h"
 
-typedef struct CategoriesPanel_ {
-   Panel super;
-   ScreenManager* scr;
-
-   Settings* settings;
-   Header* header;
-   ProcessList* pl;
-} CategoriesPanel;
-
-}*/
 
 static const char* const CategoriesFunctions[] = {"      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "Done  ", NULL};
 
@@ -97,7 +87,7 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
          break;
       }
       default:
-         if (ch < 255 && isalpha(ch))
+         if (0 < ch && ch < 255 && isgraph((unsigned char)ch))
             result = Panel_selectByTyping(super, ch);
          if (result == BREAK_LOOP)
             result = IGNORED;
@@ -107,6 +97,7 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
       int size = ScreenManager_size(this->scr);
       for (int i = 1; i < size; i++)
          ScreenManager_remove(this->scr, 1);
+
       switch (selected) {
          case 0:
             CategoriesPanel_makeMetersPage(this);
@@ -125,7 +116,7 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
    return result;
 }
 
-PanelClass CategoriesPanel_class = {
+const PanelClass CategoriesPanel_class = {
    .super = {
       .extends = Class(Panel),
       .delete = CategoriesPanel_delete

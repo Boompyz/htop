@@ -1,60 +1,69 @@
-[![Build Status](https://travis-ci.org/hishamhm/htop.svg?branch=master)](https://travis-ci.org/hishamhm/htop)
-[![PayPal donate](https://img.shields.io/badge/paypal-donate-green.svg)](http://hisham.hm/htop/index.php?page=donate)
+# [![htop](htop.png)](https://htop.dev)
 
-[htop](http://hisham.hm/htop/)
-====
+[![CI](https://github.com/htop-dev/htop/workflows/CI/badge.svg)](https://github.com/htop-dev/htop/actions)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/21665/badge.svg)](https://scan.coverity.com/projects/21665)
+[![Mailing List](https://img.shields.io/badge/Mailing%20List-htop-blue.svg)](https://groups.io/g/htop)
+[![IRC #htop](https://img.shields.io/badge/IRC-htop-blue.svg)](https://webchat.freenode.net/#htop)
+[![Github Release](https://img.shields.io/github/release/htop-dev/htop.svg)](https://github.com/htop-dev/htop/releases/latest)
+[![Download](https://api.bintray.com/packages/htop/source/htop/images/download.svg)](https://bintray.com/htop/source/htop/_latestVersion)
 
-by Hisham Muhammad <hisham@gobolinux.org> (2004 - 2016)
+![Screenshot of htop](docs/images/screenshot.png?raw=true)
 
-Introduction
-------------
+## Introduction
 
-This is `htop`, an interactive process viewer.
-It requires `ncurses`. It is developed primarily on Linux,
-but we also have code for running under FreeBSD and Mac OS X
-(help and testing are wanted for these platforms!)
+`htop` is a cross-platform interactive process viewer.
 
-This software has evolved considerably over the years,
-and is reasonably complete, but there is always room for improvement.
+`htop` allows scrolling the list of processes vertically and horizontally to see their full command lines and related information like memory and CPU consumption.
 
-Comparison between `htop` and classic `top`
--------------------------------------------
+The information displayed is configurable through a graphical setup and can be sorted and filtered interactively.
 
-* In `htop` you can scroll the list vertically and horizontally
-  to see all processes and full command lines.
-* In `top` you are subject to a delay for each unassigned
-  key you press (especially annoying when multi-key escape
-  sequences are triggered by accident).
-* `htop` starts faster (`top` seems to collect data for a while
-  before displaying anything).
-* In `htop` you don't need to type the process number to
-  kill a process, in `top` you do.
-* In `htop` you don't need to type the process number or
-  the priority value to renice a process, in `top` you do.
-* In `htop` you can kill multiple processes at once.
-* `top` is older, hence, more tested.
+Tasks related to processes (e.g. killing and renicing) can be done without entering their PIDs.
 
-Compilation instructions
-------------------------
+Running `htop` requires `ncurses` libraries (typically named libncursesw*).
 
-This program is distributed as a standard autotools-based package.
-See the [INSTALL](/INSTALL) file for detailed instructions.
+For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 
-When compiling from a [release tarball](https://hisham.hm/htop/releases/), run:
+## Build instructions
 
-    ./configure && make
+This program is distributed as a standard GNU autotools-based package.
 
-For compiling sources downloaded from the Git repository, run:
+Compiling `htop` requires the header files for `ncurses` (libncursesw*-dev). Install these and other required packages for C development from your package manager.
 
-    ./autogen.sh && ./configure && make
+Then, when compiling from a [release tarball](https://bintray.com/htop/source/htop), run:
 
-By default `make install` will install into `/usr/local`, for changing
-the path use `./configure --prefix=/some/path`.
+~~~ shell
+./configure && make
+~~~
 
-See the manual page (`man htop`) or the on-line help ('F1' or 'h'
-inside `htop`) for a list of supported key commands.
+Alternatively, for compiling sources downloaded from the Git repository (`git clone` or downloads from [Github releases](https://github.com/htop-dev/htop/releases/)),
+install the header files for `ncurses` (libncursesw*-dev) and other required development packages from your distribution's package manager. Then run:
 
-If not all keys work check your curses configuration.
+~~~ shell
+./autogen.sh && ./configure && make
+~~~
+
+By default `make install` will install into `/usr/local`, for changing the path use `./configure --prefix=/some/path`.
+
+See the manual page (`man htop`) or the on-line help ('F1' or 'h' inside `htop`) for a list of supported key commands.
+
+## Support
+
+If you have trouble running `htop` please consult your Operating System / Linux distribution documentation for getting support and filing bugs.
+
+## Bugs, development feedback
+
+We have a [development mailing list](https://htop.dev/mailinglist.html). Feel free to subscribe for release announcements or asking questions on the development of htop.
+
+You can also join our IRC channel #htop on freenode and talk to the developers there.
+
+If you have found an issue with the source of htop, please check whether this has already been reported in our [Github issue tracker](https://github.com/htop-dev/htop/issues).
+If not, please file a new issue describing the problem you have found, the location in the source code you are referring to and a possible fix.
+
+## History
+
+`htop` was invented, developed and maintained by Hisham Muhammad from 2004 to 2019. His [legacy repository](https://github.com/hishamhm/htop/) has been archived to preserve the history.
+
+In 2020 a [team](https://github.com/orgs/htop-dev/people) took over the development amicably and continues to maintain `htop` collaboratively.
 
 ## License
 
